@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-xs-12">
+      <ul>
+        <li
+          ng-repeat="country in countryList | filter: {'checked' : true}" class="favItem">
+          <img ng-src="{{country.flag}}" width="16" style="margin-right:10px;"/>{{country.name}} <span class="glyphicon glyphicon-remove closeBtn"ng-click="country.checked = false;"></span><br><br>
+          <input class="comment-field" type="text" ng-model="country.comment" placeholder="Enter comment...">
+        </li>
+      </ul>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-xs-12">
+      <span ng-repeat="i in pages"><a href="javascript:void(0);" ng-click="setPage($index)" style="padding:5px;color:#333;">{{$index+1}}</a></span>
+      <input type="text" placeholder="Search" ng-model="countrySearch">
+    <table class="table table-striped table-fixed">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col"></th>
+        <th scope="col" style="cursor:pointer" ng-click="setFilter()">Country <span class="glyphicon glyphicon-{{orderByFilter == '-name' ? 'arrow-up' : 'arrow-down'}}" aria-hidden="true"></span></th>
+        <th scope="col">Flag</th>
+        <th scope="col">Region</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="country in countryList | filter: countrySearch | orderBy: orderByFilter | limitTo : itemsPerPage : currentIndex"
+          ng-click="country.checked = !country.checked;" style="cursor:pointer;"
+          ng-class="{selected: country.checked == true}">
+        <td><input type="checkbox" ng-model="country.checked" checked="country.checked" ng-click="country.checked = !country.checked"></td>
+        <td scope="row">{{country.name}}</td>
+        <td><img ng-src="{{country.flag}}" width="32"/></td>
+        <td>{{country.region}}</td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
